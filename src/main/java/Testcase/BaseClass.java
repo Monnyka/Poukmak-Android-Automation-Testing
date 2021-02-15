@@ -1,23 +1,24 @@
 package Testcase;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.imagecomparison.SimilarityMatchingResult;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.offset.PointOption;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
 
-public class BaseClass {
+
+public class BaseClass extends BaseExample{
 
     public AppiumDriver<MobileElement> driver;
     public AndroidDriver<MobileElement> androidDriver;
@@ -35,15 +37,15 @@ public class BaseClass {
     public void BeforeClass() {
         try {
             DesiredCapabilities cap = new DesiredCapabilities();
-            cap.setCapability("deviceName", "Pixel3");
-            cap.setCapability("udid", "FA73L0300650");
+            cap.setCapability("deviceName", "Oneplus");
+            cap.setCapability("udid", "88960370");
             cap.setCapability("platformName", "Android");
             cap.setCapability("platformVersion", "10");
             cap.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, "true");
             //Just Add
             cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
-            cap.setCapability("appPackage", "com.pathmazing.stars");
-            cap.setCapability("appActivity", "com.pathmazing.stars.ui.activities.SplashScreen2Activity");
+            cap.setCapability("appPackage", "com.cellcard.poukmak");
+            cap.setCapability("appActivity", ".ui.activities.splashscreen.SplashScreenActivity");
             URL url = new URL("http://127.0.0.1:4723/wd/hub");
             driver = new AppiumDriver<>(url, cap);
             driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -53,12 +55,6 @@ public class BaseClass {
             exp.printStackTrace();
         }
     }
-
-    //This function do after done all test
-//    @AfterTest
-//    public void teardown() {
-//        driver.quit();
-//    }
 
     //Set Case to Fail
     public void setFail() {
@@ -148,8 +144,4 @@ public class BaseClass {
                 .release()
                 .perform();
     }
-
-
-
 }
-

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Poukmak-Android-Automation-Testing" />
         <module name="chatapp" />
       </profile>
     </annotationProcessing>
